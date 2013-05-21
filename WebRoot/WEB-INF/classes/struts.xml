@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts> 
+	<package name="user" namespace="/user" extends="struts-default">
+		<action name="user_*" class="com.hisupplier.guess.action.UserAction" method="{1}">
+            <result name="success">/page/base/login.jsp</result>
+        </action>
+    </package>
+	<package name="base" namespace="/" extends="struts-default">
+		<action name="login_*" class="com.hisupplier.guess.action.LoginAction" method="{1}">
+            <result name="success" type="redirect">/login_main.action</result>
+            <result name="main">/page/main.jsp</result>
+        </action>
+    </package>
+    
+	<package name="main" namespace="/main" extends="struts-default">
+		<action name="main_*" class="com.hisupplier.guess.action.MainAction" method="{1}">
+            <result name="over">/page/game_result.jsp</result>
+        </action>
+    </package>
+    
+   	<package name="ajax" namespace="/json" extends="json-default">
+		<action name="main_*" class="com.hisupplier.guess.action.MainAction" method="{1}">
+			<result name="json" type="json"/>
+        </action>
+    </package>
+</struts>
+
